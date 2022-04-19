@@ -3,16 +3,55 @@
   background: #555;
 }
 
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+}
+
+.header > form {
+  width: 18rem;
+  position: relative;
+}
+
+.searchInput {
+  height: 3rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.search-btn {
+  position: absolute;
+  top: 0.175rem;
+  right: 0.25rem;
+  font-size: 1.75rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.content-wrapper {
+  width: 100vw;
+  min-height: calc(100vh - 100px);
+}
+
 .content {
   width: 100%;
   max-width: 1200px;
+  min-height: calc(100vh - 100px);
   margin-inline: auto;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   background: #666;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 2rem;
-  flex-wrap: wrap;
+}
+
+.searchState {
+  width: 100%
 }
 
 .movie-card {
@@ -22,7 +61,7 @@
   border-radius: 0.25rem;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.6)
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.6);
 }
 
 .movie-poster {
@@ -53,17 +92,108 @@
   position: fixed;
   inset: 0 0 0 0;
   z-index: 1000;
-  background: rgba(0,0,0, 0.6)
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal {
   position: fixed;
+  position: relative;
+  width: 95%;
+  max-width: 900px;
+  height: fit-content;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: fit-content;
-  background: white;
+  background: #555;
+  color: white;
+  padding: 2rem;
+  z-index: 1000;
 }
 
+.modal::after {
+  position: absolute;
+  content: "\2715";
+  top: -3rem;
+  right: -3rem;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
+.modal > section.modal-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.modal .movie-poster {
+  width: max(30%, 200px);
+  height: fit-content;
+}
+
+.modal-img {
+  width: 100%;
+}
+
+.modal .right-side {
+  width: max(60%, 300px);
+}
+
+.right-side .initial-info {
+  padding: 0 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  min-height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc-loader {
+  background-image: url(../public/images/squirell.png);
+  background-position: center;
+  background-size: contain;
+  width: 10rem;
+  height: 10rem;
+  animation: spinner 2s linear infinite;
+  /* position: center */
+}
+
+.button-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.related-links > a > span,
+.similar-btn {
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  width: max-content;
+  color: white;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes spinner {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
